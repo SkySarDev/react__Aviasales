@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+}
+
+.filterElement {
+  width: 168px;
+}

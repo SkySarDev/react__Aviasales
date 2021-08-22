@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.description {
+  text-align: left;
+}
+
+.title {
+  font-weight: bold;
+}

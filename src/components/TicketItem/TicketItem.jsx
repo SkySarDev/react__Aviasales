@@ -11,22 +11,22 @@ const TicketItem = ({ ticketInfo }) => {
   const renderDestination = (info) => {
     return (
       <div className={classes.destination}>
-        <div className={"destination"}>
-          <div>
-            {info.origin} - {info.destination}
+        <div className={classes.destinationCol}>
+          <div className={classes.destinationHeader}>
+            {info.origin} – {info.destination}
           </div>
           <div>
-            {info.startTime} - {info.endTime}
-          </div>
-        </div>
-        <div className={"duration"}>
-          <div>
-            <div>В пути</div>
-            <div>{info.duration}</div>
+            {info.startTime} – {info.endTime}
           </div>
         </div>
-        <div className={"stops"}>
-          <div>{info.stops[1]}</div>
+        <div className={classes.destinationCol}>
+          <div>
+            <div className={classes.destinationHeader}>В пути</div>
+            <div className={classes.duration}>{info.duration}</div>
+          </div>
+        </div>
+        <div className={classes.destinationCol}>
+          <div className={classes.destinationHeader}>{info.stops[1]}</div>
           <div>{info.stops[0].join(", ")}</div>
         </div>
       </div>
@@ -36,7 +36,9 @@ const TicketItem = ({ ticketInfo }) => {
   return (
     <Block>
       <div className={classes.header}>
-        <div>{`${ticketInfo.price} Р`}</div>
+        <div className={classes.price}>
+          {`${ticketInfo.price.toLocaleString("ru")} Р`}
+        </div>
         <div>
           <img src={s7logo} alt={ticketInfo.carrier} />
         </div>

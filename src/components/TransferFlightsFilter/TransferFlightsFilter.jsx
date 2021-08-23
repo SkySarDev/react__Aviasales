@@ -1,11 +1,12 @@
 import React from "react";
 import classes from "./TransferFlightsFilter.module.css";
+import Block from "../UI/Block";
 
 const TransferFlightsFilter = () => {
   return (
-    <div>
-      <h3>Количество пересадок</h3>
-    </div>
+    <Block>
+      <h3 className={classes}>Количество пересадок</h3>
+    </Block>
   );
 };
 

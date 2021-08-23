@@ -7,10 +7,13 @@ import MainContent from "./components/MainContent/MainContent";
 import fetchData from "./API/fetchData";
 
 function App() {
-  const [tickets, setTickets] = useState([]);
-  const [fetching, showLoading, showError] = useFetching(async () =>
-    setTickets(await fetchData())
-  );
+  const [ticketData, setTicketData] = useState([]);
+  const [fetching, showLoading, showError] = useFetching(async () => {
+    const data = await fetchData();
+    const dataStack = data.slice(0, ticketData.length + 5);
+    console.log(dataStack);
+    setTicketData(dataStack);
+  });
 
   return (
     <div className={classes.main}>
@@ -19,7 +22,7 @@ function App() {
         <main className={classes.mainSection}>
           <Direction />
           <MainContent
-            tickets={tickets}
+            tickets={ticketData}
             showLoading={showLoading}
             showError={showError}
             onSearchClick={fetching}

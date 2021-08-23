@@ -1,10 +1,12 @@
 import React from "react";
 import classes from "./MainContent.module.css";
-import Block from "../UI/Block";
+import Block from "../../UI/Block";
 import TransferFlightsFilter from "../TransferFlightsFilter/TransferFlightsFilter";
 import SortTickets from "../SortTickets/SortTickets";
+import Button from "../../UI/Button";
+import TicketItem from "../TicketItem/TicketItem";
 
-const MainContent = ({ tickets, onSearchClick }) => {
+const MainContent = ({ tickets, onSearchClick, showLoading }) => {
   return (
     <div>
       {tickets.length ? (
@@ -14,16 +16,29 @@ const MainContent = ({ tickets, onSearchClick }) => {
           </div>
           <div className={classes.content}>
             <SortTickets />
-            <div className={classes.ticketsList}>
-              <Block>Список билетов</Block>
+            <ul className={classes.sectionTickets}>
+              {tickets.map((ticket) => {
+                return (
+                  <li key={ticket.price + ticket.carrier}>
+                    <TicketItem data={ticket} />
+                  </li>
+                );
+              })}
+            </ul>
+            <div className={classes.sectionButton}>
+              <Button
+                name={"Показать еще 5 билетов!"}
+                onSearchClick={onSearchClick}
+              />
             </div>
           </div>
         </div>
       ) : (
         <div className={classes.wrapper}>
-          <Block>
-            <button onClick={() => onSearchClick()}>Найти билеты</button>
-          </Block>
+          <Button
+            name={showLoading ? "Загрузка списка..." : "Найти билеты"}
+            onSearchClick={onSearchClick}
+          />
         </div>
       )}
     </div>

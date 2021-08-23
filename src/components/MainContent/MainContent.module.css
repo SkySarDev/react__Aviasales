@@ -13,6 +13,11 @@
   width: 502px;
 }
 
-.ticketsList {
+.sectionTickets,
+.sectionButton {
   margin-top: 20px;
+}
+
+.sectionTickets li:not(:last-child) {
+  margin-bottom: 20px;
 }

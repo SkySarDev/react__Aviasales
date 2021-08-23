@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./SortTickets.module.css";
-import Block from "../UI/Block";
+import Block from "../../UI/Block";
 
 const SortTickets = () => {
   return (

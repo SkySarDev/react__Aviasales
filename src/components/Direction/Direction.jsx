@@ -1,5 +1,5 @@
 import React from "react";
-import Block from "../UI/Block";
+import Block from "../../UI/Block";
 import classes from "./Direction.module.css";
 
 const Direction = () => {

@@ -11,7 +11,6 @@ function App() {
   const [fetching, showLoading, showError] = useFetching(async () => {
     const data = await fetchData();
     const dataStack = data.slice(0, ticketData.length + 5);
-    console.log(dataStack);
     setTicketData(dataStack);
   });
 

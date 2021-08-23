@@ -18,6 +18,10 @@
   margin-top: 20px;
 }
 
+.sectionButton {
+  margin-bottom: 30px;
+}
+
 .sectionTickets li:not(:last-child) {
   margin-bottom: 20px;
 }

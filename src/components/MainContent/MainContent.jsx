@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./MainContent.module.css";
-import Block from "../../UI/Block";
 import TransferFlightsFilter from "../TransferFlightsFilter/TransferFlightsFilter";
 import SortTickets from "../SortTickets/SortTickets";
 import Button from "../../UI/Button";
@@ -20,7 +19,7 @@ const MainContent = ({ tickets, onSearchClick, showLoading }) => {
               {tickets.map((ticket) => {
                 return (
                   <li key={ticket.price + ticket.carrier}>
-                    <TicketItem data={ticket} />
+                    <TicketItem ticketInfo={ticket} />
                   </li>
                 );
               })}

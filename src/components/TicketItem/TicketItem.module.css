@@ -1,12 +1,9 @@
 .header,
-.content {
+.destination {
   display: flex;
   justify-content: space-between;
 }
 
-.header {
-  margin-bottom: 20px;
-}
-
-.content {
+.destination {
+  margin-top: 20px;
 }

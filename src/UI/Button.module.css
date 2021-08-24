@@ -7,5 +7,11 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
+  line-height: 20px;
   text-transform: uppercase;
+}
+
+.button:disabled {
+  background-color: #88bde8;
+  cursor: wait;
 }

@@ -5,7 +5,7 @@ import SortTickets from "../SortTickets/SortTickets";
 import Button from "../../UI/Button";
 import TicketItem from "../TicketItem/TicketItem";
 
-const MainContent = ({ tickets, onSearchClick, showLoading }) => {
+const MainContent = ({ tickets, onSearchClick, isLoading }) => {
   return (
     <div>
       {tickets.length ? (
@@ -28,6 +28,7 @@ const MainContent = ({ tickets, onSearchClick, showLoading }) => {
               <Button
                 name={"Показать еще 5 билетов!"}
                 onSearchClick={onSearchClick}
+                isLoading={isLoading}
               />
             </div>
           </div>
@@ -35,8 +36,9 @@ const MainContent = ({ tickets, onSearchClick, showLoading }) => {
       ) : (
         <div className={classes.wrapper}>
           <Button
-            name={showLoading ? "Загрузка списка..." : "Найти билеты"}
+            name={"Найти билеты"}
             onSearchClick={onSearchClick}
+            isLoading={isLoading}
           />
         </div>
       )}

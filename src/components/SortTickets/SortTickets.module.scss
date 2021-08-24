@@ -1,12 +1,13 @@
 .sortingPanel {
   display: flex;
-  line-height: 20px;
+  line-height: 18px;
 
   li {
     width: 167px;
     padding: 15px;
     cursor: pointer;
     border: 1px solid #dfe5ec;
+    background-color: #fff;
   }
 
   .left {

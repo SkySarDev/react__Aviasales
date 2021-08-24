@@ -22,7 +22,7 @@ function App() {
           <Direction />
           <MainContent
             tickets={ticketData}
-            showLoading={showLoading}
+            isLoading={showLoading}
             showError={showError}
             onSearchClick={fetching}
           />

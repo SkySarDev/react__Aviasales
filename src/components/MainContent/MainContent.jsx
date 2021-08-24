@@ -19,7 +19,7 @@ const MainContent = ({ tickets, onSearchClick, isLoading }) => {
               {tickets.map((ticket) => {
                 return (
                   <li key={ticket.price + ticket.carrier}>
-                    <TicketItem ticketInfo={ticket} />
+                    <TicketItem ticketRowData={ticket} />
                   </li>
                 );
               })}

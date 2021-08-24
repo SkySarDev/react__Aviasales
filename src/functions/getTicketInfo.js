@@ -1,4 +1,4 @@
-export default function getTicketData(ticketObj) {
+export default function getTicketInfo(ticketObj) {
   const addZero = (num) => (num < 10 ? `0${num}` : num);
 
   const startDate = Date.parse(ticketObj.date);

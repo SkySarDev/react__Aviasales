@@ -13,14 +13,14 @@
   .left {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right: 0;
   }
 
   .center {
-    border-right: 0;
-    border-left: 0;
   }
 
   .right {
+    border-left: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
@@ -28,7 +28,7 @@
   .active {
     color: #fff;
     background-color: #2196f3;
-    border: 1px solid #2196f3;
+    border: 0;
     transition: all 0.35s;
   }
 }

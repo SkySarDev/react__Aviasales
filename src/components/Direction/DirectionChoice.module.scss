@@ -33,8 +33,13 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   transition: background-color 0.35s;
-}
 
-.button:hover {
-  background-color: #006dce;
+  &:hover {
+    background-color: #006dce;
+  }
+
+  &:disabled {
+    background-color: #88bde8;
+    cursor: wait;
+  }
 }

@@ -1,22 +1,29 @@
 import React from "react";
 import Block from "../../UI/Block";
-import classes from "./Direction.module.css";
+import plane from "../../images/plane.svg";
+import classes from "./DirectionChoice.module.scss";
 
-const Direction = () => {
+const DirectionChoice = ({ onSearchClick, showLoading }) => {
   return (
     <div className={classes.wrapper}>
       <Block>
-        <select name="origin">
-          <option value="MOW">Москва, Россия (MOW)</option>
-        </select>
-        =>
-        <select name="destination">
-          <option value="HKT">Пхукет, Таиланд (HKT)</option>
-        </select>
-        <button>Найти билеты</button>
+        <div className={classes.inner}>
+          <div className={classes.selectDestination}>Москва, Россия (MOW)</div>
+          <div>
+            <img className={classes.planeImg} src={plane} alt={"plane"} />
+          </div>
+          <div className={classes.selectDestination}>Пхукет, Таиланд (HKT)</div>
+          <button
+            className={classes.button}
+            onClick={onSearchClick}
+            disabled={showLoading}
+          >
+            Найти билеты
+          </button>
+        </div>
       </Block>
     </div>
   );
 };
 
-export default Direction;
+export default DirectionChoice;

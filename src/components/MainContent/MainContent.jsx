@@ -4,21 +4,30 @@ import TransferFlightsFilter from "../TransferFlightsFilter/TransferFlightsFilte
 import SortTickets from "../SortTickets/SortTickets";
 import Button from "../../UI/Button";
 import TicketItem from "../TicketItem/TicketItem";
+import { Transition } from "react-transition-group";
 
 const MainContent = ({ tickets, onSearchClick, isLoading }) => {
   return (
-    <div>
-      {tickets.length ? (
-        <div className={classes.wrapper}>
+    <Transition
+      in={!!tickets.length}
+      timeout={{
+        enter: 250,
+        exit: 500,
+      }}
+      mountOnEnter
+      unmountOnExit
+    >
+      {(state) => (
+        <div className={`${classes.mainWrapper} ${classes[state]}`}>
           <div className={classes.sideBar}>
             <TransferFlightsFilter />
           </div>
           <div className={classes.content}>
             <SortTickets />
             <ul className={classes.sectionTickets}>
-              {tickets.map((ticket) => {
+              {tickets.map((ticket, i) => {
                 return (
-                  <li key={ticket.price + ticket.carrier}>
+                  <li key={ticket.price + i}>
                     <TicketItem ticketRowData={ticket} />
                   </li>
                 );
@@ -33,16 +42,8 @@ const MainContent = ({ tickets, onSearchClick, isLoading }) => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className={classes.wrapper}>
-          <Button
-            name={"Найти билеты"}
-            onSearchClick={onSearchClick}
-            isLoading={isLoading}
-          />
-        </div>
       )}
-    </div>
+    </Transition>
   );
 };
 

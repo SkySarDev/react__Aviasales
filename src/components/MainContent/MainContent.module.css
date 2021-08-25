@@ -1,8 +1,11 @@
-.wrapper {
+.mainWrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  opacity: 0;
+  transition: all 300ms;
+  transform: translateY(30px);
 }
 
 .sideBar {
@@ -24,4 +27,21 @@
 
 .sectionTickets li:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.entering {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.entered {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.exiting {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.exited {
+  opacity: 0;
+  transform: translateY(30px);
 }

@@ -1,11 +1,10 @@
 import classes from "./App.module.css";
-import Header from "./components/Header/Header";
-import DirectionChoice from "./components/Direction/DirectionChoice";
 import React, { useState } from "react";
-import useFetching from "./hooks/useFetching";
+import Header from "./components/Header/Header";
+import DirectionChoice from "./components/DirectionChoice/DirectionChoice";
 import MainContent from "./components/MainContent/MainContent";
+import useFetching from "./hooks/useFetching";
 import fetchData from "./API/fetchData";
-import Loading from "./UI/Loading";
 
 function App() {
   const [ticketData, setTicketData] = useState([]);
@@ -19,9 +18,8 @@ function App() {
     <div className={classes.main}>
       <div className={classes.container}>
         <Header />
-        <main className={classes.mainSection}>
-          <DirectionChoice onSearchClick={fetching} showLoading={showLoading} />
-          <Loading show={showLoading} />
+        <main>
+          <DirectionChoice />
           <MainContent
             tickets={ticketData}
             isLoading={showLoading}

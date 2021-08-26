@@ -3,7 +3,7 @@ import Block from "../../UI/Block";
 import plane from "../../images/plane.svg";
 import classes from "./DirectionChoice.module.scss";
 
-const DirectionChoice = ({ onSearchClick, showLoading }) => {
+const DirectionChoice = () => {
   return (
     <div className={classes.wrapper}>
       <Block>
@@ -13,13 +13,6 @@ const DirectionChoice = ({ onSearchClick, showLoading }) => {
             <img className={classes.planeImg} src={plane} alt={"plane"} />
           </div>
           <div className={classes.selectDestination}>Пхукет, Таиланд (HKT)</div>
-          <button
-            className={classes.button}
-            onClick={onSearchClick}
-            disabled={showLoading}
-          >
-            Найти билеты
-          </button>
         </div>
       </Block>
     </div>

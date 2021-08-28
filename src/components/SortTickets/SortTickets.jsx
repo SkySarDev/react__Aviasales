@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import classes from "./SortTickets.module.scss";
+import { TicketsContext } from "../../state/TicketsContext";
 
 const SortTickets = () => {
-  const [active, setActive] = useState("cheaper");
+  const { state, dispatch } = useContext(TicketsContext);
 
-  const changeActive = (e) => setActive(e.target.dataset.key);
+  const changeSortType = (e) => {
+    dispatch({
+      type: "changeSortType",
+      payload: { sortType: e.target.dataset.key },
+    });
+    dispatch({ type: "showTicketStack" });
+  };
 
   const renderSortButton = (text, name, classname) => {
     return (
       <li
         className={`${classes[classname]}
-          ${active === name ? classes.active : ""}`}
+          ${state.sortType === name ? classes.active : ""}`}
         data-key={name}
-        onClick={changeActive}
+        onClick={changeSortType}
       >
         {text}
       </li>

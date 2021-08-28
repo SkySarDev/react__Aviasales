@@ -1,0 +1,7 @@
+.ticketList {
+  margin-top: 20px;
+
+  li:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

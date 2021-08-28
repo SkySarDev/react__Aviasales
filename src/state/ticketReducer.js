@@ -1,4 +1,4 @@
-import { SortData } from "../functions/sortData";
+import { sortData } from "../functions/sortData";
 
 export const ticketReducer = (state, action) => {
   switch (action.type) {
@@ -6,12 +6,11 @@ export const ticketReducer = (state, action) => {
       return { ...state, ticketData: action.payload.data };
     }
     case "showTicketStack":
-      const sortedData = SortData(state.ticketData, state.sortType);
-
+      const sortedData = sortData(state.ticketData, state.sortType);
       return {
         ...state,
         ticketData: sortedData,
-        ticketStack: state.ticketData.slice(0, 5),
+        ticketStack: sortedData.slice(0, 5),
       };
     case "changeSortType":
       const { sortType } = action.payload;

@@ -1,49 +1,67 @@
-import React from "react";
-import classes from "./MainContent.module.css";
+import React, { useContext } from "react";
+import classes from "./MainContent.module.scss";
+import animations from "../../UI/Animations.module.scss";
 import TransferFlightsFilter from "../TransferFlightsFilter/TransferFlightsFilter";
 import SortTickets from "../SortTickets/SortTickets";
 import Button from "../../UI/Button";
-import TicketItem from "../TicketItem/TicketItem";
 import { Transition } from "react-transition-group";
+import TicketList from "../Tickets/TicketList";
+import { TicketsContext } from "../../state/TicketsContext";
 
-const MainContent = ({ tickets, onSearchClick, isLoading }) => {
+const MainContent = ({ onSearchTickets }) => {
+  const { state, showLoading, getData } = useContext(TicketsContext);
+
   return (
-    <Transition
-      in={!!tickets.length}
-      timeout={{
-        enter: 250,
-        exit: 500,
-      }}
-      mountOnEnter
-      unmountOnExit
-    >
-      {(state) => (
-        <div className={`${classes.mainWrapper} ${classes[state]}`}>
-          <div className={classes.sideBar}>
-            <TransferFlightsFilter />
+    <div className={classes.mainWrapper}>
+      <Transition
+        in={!state.ticketStack.length}
+        timeout={{
+          exit: 300,
+        }}
+        unmountOnExit
+      >
+        {(animationState) => (
+          <div
+            className={`${classes.searchField} ${animations[animationState]}`}
+          >
+            <Button
+              name={"Найти билеты"}
+              onHandleClick={getData}
+              showLoading={showLoading}
+            />
           </div>
-          <div className={classes.content}>
-            <SortTickets />
-            <ul className={classes.sectionTickets}>
-              {tickets.map((ticket, i) => {
-                return (
-                  <li key={ticket.price + i}>
-                    <TicketItem ticketRowData={ticket} />
-                  </li>
-                );
-              })}
-            </ul>
-            <div className={classes.sectionButton}>
-              <Button
-                name={"Показать еще 5 билетов!"}
-                onSearchClick={onSearchClick}
-                isLoading={isLoading}
-              />
+        )}
+      </Transition>
+
+      <Transition
+        in={!!state.ticketStack.length}
+        timeout={{
+          enter: 300,
+        }}
+        mountOnEnter
+      >
+        {(animationState) => (
+          <div
+            className={`${classes.ticketsField} ${animations[animationState]}`}
+          >
+            <div className={classes.sideBar}>
+              <TransferFlightsFilter />
+            </div>
+            <div className={classes.content}>
+              <SortTickets />
+              <TicketList tickets={state.ticketStack} />
+              <div className={classes.sectionButton}>
+                <Button
+                  name={"Показать еще 5 билетов!"}
+                  onHandleClick={onSearchTickets}
+                  showLoading={showLoading}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </Transition>
+        )}
+      </Transition>
+    </div>
   );
 };
 

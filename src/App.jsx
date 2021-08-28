@@ -1,17 +1,24 @@
 import classes from "./App.module.css";
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import Header from "./components/Header/Header";
 import DirectionChoice from "./components/DirectionChoice/DirectionChoice";
 import MainContent from "./components/MainContent/MainContent";
 import useFetching from "./hooks/useFetching";
 import fetchData from "./API/fetchData";
+import { ticketReducer } from "./state/ticketReducer";
+import { TicketsContext } from "./state/TicketsContext";
 
-function App() {
-  const [ticketData, setTicketData] = useState([]);
-  const [fetching, showLoading, showError] = useFetching(async () => {
+const App = () => {
+  const [state, dispatch] = useReducer(ticketReducer, {
+    ticketData: [],
+    ticketStack: [],
+    sortType: "cheaper",
+  });
+
+  const [getData, showLoading, showError] = useFetching(async () => {
     const data = await fetchData();
-    const dataStack = data.slice(0, ticketData.length + 5);
-    setTicketData(dataStack);
+    dispatch({ type: "setData", payload: { data } });
+    dispatch({ type: "showTicketStack" });
   });
 
   return (
@@ -20,16 +27,15 @@ function App() {
         <Header />
         <main>
           <DirectionChoice />
-          <MainContent
-            tickets={ticketData}
-            isLoading={showLoading}
-            showError={showError}
-            onSearchClick={fetching}
-          />
+          <TicketsContext.Provider
+            value={{ state, dispatch, showLoading, getData, showError }}
+          >
+            <MainContent />
+          </TicketsContext.Provider>
         </main>
       </div>
     </div>
   );
-}
+};
 
 export default App;

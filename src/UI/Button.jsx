@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Button.module.css";
 
-const Button = ({ name, onSearchClick, isLoading }) => {
+const Button = ({ name, onHandleClick, showLoading }) => {
   return (
     <button
       className={classes.button}
-      onClick={onSearchClick}
-      disabled={isLoading}
+      onClick={onHandleClick}
+      disabled={showLoading}
     >
-      {isLoading ? "Загрузка списка..." : name}
+      {showLoading ? "Загрузка списка..." : name}
     </button>
   );
 };

@@ -3,7 +3,8 @@ import classes from "./TicketList.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import TicketItem from "./TicketItem";
 
-const TicketList = ({ tickets }) => {
+const TicketList = ({ ticketList, ticketStackSize }) => {
+  const ticketStack = ticketList.slice(0, ticketStackSize);
   const animations = {
     initial: {
       opacity: 0,
@@ -21,7 +22,7 @@ const TicketList = ({ tickets }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       <ul className={classes.ticketList}>
-        {tickets.map((ticket, i) => (
+        {ticketStack.map((ticket, i) => (
           <motion.li key={ticket.price + i} {...animations} custom={i}>
             <TicketItem ticketRowData={ticket} />
           </motion.li>

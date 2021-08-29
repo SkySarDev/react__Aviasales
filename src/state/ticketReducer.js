@@ -18,10 +18,10 @@ export const ticketReducer = (state, action) => {
 
       return { ...state, ...updateState };
     }
-    case "showTicketStack": {
+    case "showTickets": {
       return {
         ...state,
-        ticketStack: state.ticketData.slice(0, state.ticketStackSize),
+        ticketProcessedData: state.ticketData,
       };
     }
     case "changeSortType": {
@@ -30,9 +30,12 @@ export const ticketReducer = (state, action) => {
       return { ...state, sortType };
     }
     case "sortData": {
-      const ticketData = sortData(state.ticketData, state.sortType);
+      const ticketProcessedData = sortData(
+        [...state.ticketData],
+        state.sortType
+      );
 
-      return { ...state, ticketData };
+      return { ...state, ticketProcessedData };
     }
     default:
       throw new Error("Unknown action");

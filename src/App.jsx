@@ -11,7 +11,7 @@ import { TicketsContext } from "./state/TicketsContext";
 const App = () => {
   const [state, dispatch] = useReducer(ticketReducer, {
     ticketData: [],
-    ticketStack: [],
+    ticketProcessedData: [],
     ticketStackSize: 0,
     moreTickets: true,
     sortType: "cheaper",
@@ -24,7 +24,7 @@ const App = () => {
       payload: { ticketData: data, ticketStackSize: 5 },
     });
     dispatch({ type: "sortData" });
-    dispatch({ type: "showTicketStack" });
+    dispatch({ type: "showTickets" });
   });
 
   return (

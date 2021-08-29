@@ -29,7 +29,6 @@ const MainContent = ({ onSearchTickets }) => {
     dispatch({
       type: "setTicketStackSize",
     });
-    dispatch({ type: "showTicketStack" });
   };
 
   return (
@@ -54,7 +53,10 @@ const MainContent = ({ onSearchTickets }) => {
             </div>
             <div className={classes.content}>
               <SortTickets />
-              <TicketList tickets={state.ticketStack} />
+              <TicketList
+                ticketList={state.ticketProcessedData}
+                ticketStackSize={state.ticketStackSize}
+              />
               {state.moreTickets && (
                 <div className={classes.sectionButton}>
                   <Button

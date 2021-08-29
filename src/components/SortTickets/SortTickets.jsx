@@ -11,7 +11,6 @@ const SortTickets = () => {
       payload: { sortType: e.target.dataset.key },
     });
     dispatch({ type: "sortData" });
-    dispatch({ type: "showTicketStack" });
   };
 
   const renderSortButton = (text, name, classname) => {

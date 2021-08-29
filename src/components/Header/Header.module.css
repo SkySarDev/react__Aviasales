@@ -1,11 +1,26 @@
 .container {
   display: flex;
+  align-items: center;
+  padding-top: 20px;
 }
 
 .description {
+  margin-left: 10px;
   text-align: left;
+  text-transform: none;
+  color: #2196f3;
+  text-shadow: 2px 2px 4px rgba(55, 104, 142, 0.25);
 }
 
 .title {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 30px;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 5px;
+  font-size: 18px;
+  opacity: 0.8;
+  font-style: italic;
 }

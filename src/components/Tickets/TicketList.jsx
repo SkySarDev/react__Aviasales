@@ -13,7 +13,6 @@ const TicketList = ({ tickets }) => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.05,
         type: "spring",
       },
     }),

@@ -10,6 +10,7 @@ const SortTickets = () => {
       type: "changeSortType",
       payload: { sortType: e.target.dataset.key },
     });
+    dispatch({ type: "sortData" });
     dispatch({ type: "showTicketStack" });
   };
 

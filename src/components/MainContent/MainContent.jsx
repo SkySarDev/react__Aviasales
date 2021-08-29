@@ -8,8 +8,7 @@ import { TicketsContext } from "../../state/TicketsContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MainContent = ({ onSearchTickets }) => {
-  const { state, showLoading, getData } = useContext(TicketsContext);
-  const showContent = !!state.ticketStack.length;
+  const { state, dispatch, showLoading, getData } = useContext(TicketsContext);
   const animations = {
     button: {
       animate: { opacity: 1 },
@@ -26,10 +25,17 @@ const MainContent = ({ onSearchTickets }) => {
     },
   };
 
+  const showMoreTickets = () => {
+    dispatch({
+      type: "setTicketStackSize",
+    });
+    dispatch({ type: "showTicketStack" });
+  };
+
   return (
     <div className={classes.mainWrapper}>
       <AnimatePresence initial={false}>
-        {!showContent && (
+        {!state.ticketStackSize && (
           <motion.div className={classes.searchField} {...animations.button}>
             <Button
               name={"Найти билеты"}
@@ -41,7 +47,7 @@ const MainContent = ({ onSearchTickets }) => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {showContent && (
+        {state.ticketStackSize && (
           <motion.div className={classes.ticketsField} {...animations.content}>
             <div className={classes.sideBar}>
               <TransferFlightsFilter />
@@ -49,13 +55,15 @@ const MainContent = ({ onSearchTickets }) => {
             <div className={classes.content}>
               <SortTickets />
               <TicketList tickets={state.ticketStack} />
-              <div className={classes.sectionButton}>
-                <Button
-                  name={"Показать еще 5 билетов!"}
-                  onHandleClick={onSearchTickets}
-                  showLoading={showLoading}
-                />
-              </div>
+              {state.moreTickets && (
+                <div className={classes.sectionButton}>
+                  <Button
+                    name={"Показать еще 5 билетов!"}
+                    onHandleClick={showMoreTickets}
+                    showLoading={showLoading}
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
         )}

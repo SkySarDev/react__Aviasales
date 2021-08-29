@@ -12,12 +12,18 @@ const App = () => {
   const [state, dispatch] = useReducer(ticketReducer, {
     ticketData: [],
     ticketStack: [],
+    ticketStackSize: 0,
+    moreTickets: true,
     sortType: "cheaper",
   });
 
   const [getData, showLoading, showError] = useFetching(async () => {
     const data = await fetchData();
-    dispatch({ type: "setData", payload: { data } });
+    dispatch({
+      type: "setData",
+      payload: { ticketData: data, ticketStackSize: 5 },
+    });
+    dispatch({ type: "sortData" });
     dispatch({ type: "showTicketStack" });
   });
 

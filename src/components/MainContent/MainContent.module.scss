@@ -1,4 +1,5 @@
-.mainWrapper {
+.mainWrapper,
+.sectionButton {
   margin-top: 20px;
 }
 
@@ -13,8 +14,6 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  //transition: all 0.5s;
-  //transform: translateY(20px);
 }
 
 .sideBar {
@@ -23,8 +22,8 @@
 
 .content {
   width: 502px;
-}
 
-.sectionButton {
-  margin: 20px 0 30px;
+  &:last-child {
+    margin-bottom: 30px;
+  }
 }

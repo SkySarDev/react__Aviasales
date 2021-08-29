@@ -13,6 +13,7 @@ const App = () => {
     ticketData: [],
     ticketProcessedData: [],
     ticketStackSize: 0,
+    ticketFilter: false,
     moreTickets: true,
     sortType: "cheaper",
   });
@@ -24,7 +25,6 @@ const App = () => {
       payload: { ticketData: data, ticketStackSize: 5 },
     });
     dispatch({ type: "sortData" });
-    dispatch({ type: "showTickets" });
   });
 
   return (

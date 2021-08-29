@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./TicketItem.module.css";
 import Block from "../../UI/Block";
-import s7logo from "../../images/S7-Logo.png";
 import getTicketInfo from "../../functions/getTicketInfo";
 
 const TicketItem = ({ ticketRowData }) => {
@@ -40,7 +39,10 @@ const TicketItem = ({ ticketRowData }) => {
           {`${ticketRowData.price.toLocaleString("ru")} Р`}
         </div>
         <div>
-          <img src={s7logo} alt={ticketRowData.carrier} />
+          <img
+            src={`http://pics.avs.io/99/36/${ticketRowData.carrier}.png`}
+            alt={ticketRowData.carrier}
+          />
         </div>
       </div>
       {renderDestination(whereTo)}

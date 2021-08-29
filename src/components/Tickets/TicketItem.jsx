@@ -41,6 +41,8 @@ const TicketItem = ({ ticketRowData }) => {
         <div>
           <img
             src={`http://pics.avs.io/99/36/${ticketRowData.carrier}.png`}
+            width={99}
+            height={36}
             alt={ticketRowData.carrier}
           />
         </div>

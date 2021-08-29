@@ -1,5 +1,8 @@
 .main {
   text-align: center;
+  background-color: rgba(243, 247, 250, 0.85);
+  height: 100%;
+  min-height: 100vh;
 }
 
 .container {

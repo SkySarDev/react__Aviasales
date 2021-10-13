@@ -3,7 +3,7 @@
 A simple demo of a web-application for finding flight tickets.
 
 ### **Demo**
-https://skysar.site/aviasales/
+https://skysar.site/demo/aviasales
 
 
 ### **Technology stack**
